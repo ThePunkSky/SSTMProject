@@ -4,33 +4,33 @@ import { Card, CardContent } from "@/components/ui/card";
 const services = [
   {
     icon: Gauge,
-    title: "ECU Tuning & Dyno Testing",
-    description: "Maximize horsepower with precision engine calibration and real-time dyno testing for peak performance.",
+    title: "Dyno Tuning & Calibration",
+    description: "Unleash every cubic inch of V8 power with precision dyno tuning. We extract maximum horsepower and torque from American muscle.",
   },
   {
     icon: Cog,
-    title: "Performance Upgrades",
-    description: "Turbos, superchargers, exhaust systems, intakes, and intercoolers engineered for serious power gains.",
+    title: "Forced Induction",
+    description: "Superchargers, twin turbos, and blowers for Mustangs, Camaros, Challengers, and F-150s. American muscle demands American power.",
   },
   {
     icon: Settings,
-    title: "Custom Suspension Setups",
-    description: "Precision-tuned suspension for track dominance or street comfort with maximum handling control.",
+    title: "Suspension & Handling",
+    description: "Track-ready suspension setups that keep American muscle planted through the corners and stable at top speed.",
   },
   {
     icon: Disc,
-    title: "High-End Braking Systems",
-    description: "Pro-grade brake upgrades for serious stopping power that matches your performance build.",
+    title: "Brake Upgrades",
+    description: "Big brake kits engineered to stop serious horsepower. When you're pushing 700+ HP, you need brakes that can handle it.",
   },
   {
     icon: Wrench,
-    title: "Precision Engine Builds",
-    description: "Complete engine builds and swaps from experienced technicians who know how to extract power safely.",
+    title: "LS & Coyote Swaps",
+    description: "Expert LS swaps, Coyote swaps, and Hemi conversions. We breathe V8 life into anything with wheels.",
   },
   {
     icon: Sparkles,
-    title: "Custom Aesthetics",
-    description: "Carbon fiber parts, aero kits, racing interiors that make your build look as fast as it performs.",
+    title: "Classic Restoration",
+    description: "Restore and modernize classic American muscle with period-correct aesthetics and modern performance upgrades.",
   },
 ];
 

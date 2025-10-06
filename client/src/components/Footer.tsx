@@ -33,7 +33,7 @@ export default function Footer() {
           <div>
             <h3 className="font-display font-bold text-xl mb-4">2 The Sky Motorsports</h3>
             <p className="text-sm text-muted-foreground mb-4">
-              High-performance tuning and custom builds for enthusiasts who demand the best.
+              American muscle. V8 power. Modern performance engineering for true enthusiasts.
             </p>
             <div className="flex gap-2">
               <Button

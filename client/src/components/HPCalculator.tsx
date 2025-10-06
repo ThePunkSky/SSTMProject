@@ -11,19 +11,19 @@ import {
 import { ArrowRight } from "lucide-react";
 
 const carModels = [
-  { name: "Nissan GT-R", baseHp: 450 },
-  { name: "BMW M3", baseHp: 425 },
-  { name: "Subaru WRX STI", baseHp: 305 },
-  { name: "Ford Mustang GT", baseHp: 460 },
-  { name: "Audi S4", baseHp: 335 },
-  { name: "Corvette C8", baseHp: 490 },
+  { name: "Ford Mustang GT (Coyote 5.0L)", baseHp: 450 },
+  { name: "Chevy Camaro SS (LT1 6.2L)", baseHp: 455 },
+  { name: "Dodge Challenger R/T (Hemi 5.7L)", baseHp: 370 },
+  { name: "Corvette Stingray (LT2 6.2L)", baseHp: 490 },
+  { name: "Ford F-150 (Coyote 5.0L)", baseHp: 400 },
+  { name: "Ram 1500 (Hemi 5.7L)", baseHp: 395 },
 ];
 
 const upgradePackages = [
-  { name: "Stage 1 (ECU Tune + Intake)", gain: 45, multiplier: 1.15 },
-  { name: "Stage 2 (+ Exhaust + Intercooler)", gain: 85, multiplier: 1.28 },
-  { name: "Stage 3 (+ Turbo/Supercharger)", gain: 180, multiplier: 1.65 },
-  { name: "Full Build (Engine + All Upgrades)", gain: 350, multiplier: 2.0 },
+  { name: "Stage 1 (Tune + Cold Air Intake)", gain: 40, multiplier: 1.12 },
+  { name: "Stage 2 (+ Headers + Exhaust)", gain: 75, multiplier: 1.22 },
+  { name: "Supercharger Kit", gain: 200, multiplier: 1.55 },
+  { name: "Full Build (Forged Internals + Blower)", gain: 400, multiplier: 1.95 },
 ];
 
 export default function HPCalculator() {

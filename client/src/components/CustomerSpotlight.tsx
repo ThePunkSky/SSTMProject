@@ -5,11 +5,11 @@ import customerCar1 from "@assets/stock_images/turbocharged_engine__8abe4816.jpg
 
 const spotlight = {
   carImage: customerCar1,
-  carName: "2020 Nissan GT-R",
-  ownerName: "Marcus Rodriguez",
-  testimonial: "I brought my GT-R to 2 The Sky wanting more power without sacrificing reliability. They delivered beyond my expectations. The dyno numbers speak for themselves, and the car still drives like a dream on the street.",
-  hpGain: "250HP",
-  mods: ["Twin Turbo Upgrade", "ECU Tune", "Intercooler", "Exhaust System"],
+  carName: "2021 Mustang GT",
+  ownerName: "Jake Thompson",
+  testimonial: "Brought my Coyote to 2 The Sky for a supercharger build. These guys know American V8s inside and out. The Whipple screams, the tune is perfect, and I'm putting down 750 to the wheels on pump gas. Best shop in the game.",
+  hpGain: "+300HP",
+  mods: ["Whipple Supercharger", "Forged Internals", "Headers & Exhaust", "Dyno Tune"],
 };
 
 export default function CustomerSpotlight() {

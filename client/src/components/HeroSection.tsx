@@ -18,14 +18,14 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-background" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-32">
-        <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white mb-6">
-          BUILD LEGENDS
+        <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white mb-6 uppercase">
+          American Muscle
         </h1>
         <p className="text-xl sm:text-2xl md:text-3xl text-white/90 mb-4 font-display font-semibold">
-          High-Performance Tuning & Custom Builds
+          V8 Power. No Compromise.
         </p>
         <p className="text-lg sm:text-xl text-white/80 mb-12 max-w-3xl mx-auto">
-          We don't just repair cars. We transform them into thrilling machines that dominate the street and track.
+          Classic muscle shop heritage meets modern performance engineering. We build American legends that dominate the quarter mile and the streets.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

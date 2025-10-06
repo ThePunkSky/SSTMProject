@@ -19,25 +19,26 @@ export default function AboutSection() {
             <Card>
               <CardContent className="p-8">
                 <h3 className="font-display font-bold text-2xl mb-4">
-                  Built by Gearheads, For Gearheads
+                  American Muscle. Modern Engineering.
                 </h3>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    We started where every true enthusiast does: in a garage, wrenching on junkyard 
-                    finds, racing them hard, blowing them up, and coming back stronger every time.
+                    We grew up in the golden age of American muscle—wrenching on small-block Chevys, 
+                    pushing junkyard Fox bodies to their limits, and learning the hard way what separates 
+                    a weekend warrior from a true performance build.
                   </p>
                   <p>
-                    Those early failures taught us what works and what doesn't. Now, with years of 
-                    experience and professional-level certifications, we know how to build machines 
-                    that don't just make power—they make legends.
+                    Those lessons stuck. Now we blend old-school muscle shop wisdom with cutting-edge 
+                    tuning technology. LS swaps, Coyote builds, Hemi conversions—we speak fluent V8 and 
+                    we build them to last.
                   </p>
                   <p>
-                    2 The Sky Motorsports isn't about fixing daily drivers. It's about taking what 
-                    you already love and pushing it to its absolute limit. Whether you're chasing 
-                    track times or street credibility, we've got the skills to get you there.
+                    2 The Sky Motorsports pays homage to the legendary American speed shops while pushing 
+                    modern muscle to levels they never imagined. Whether you're building a classic Camaro 
+                    or supercharging a new F-150, we honor the heritage while chasing horsepower.
                   </p>
                   <p className="font-semibold text-foreground pt-2">
-                    We don't just repair cars. We build legends. And so can you.
+                    American iron. American power. No substitutes.
                   </p>
                 </div>
               </CardContent>
