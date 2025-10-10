@@ -10,7 +10,7 @@ export default function AboutSection() {
             Our Story
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            From junkyard projects to professional builds that dominate.
+            We're not legacy—we're youngbloods. This is a project right now, and I'm just getting started.
           </p>
         </div>
 
@@ -19,26 +19,28 @@ export default function AboutSection() {
             <Card>
               <CardContent className="p-8">
                 <h3 className="font-display font-bold text-2xl mb-4">
-                  American Muscle. Modern Engineering.
+                  Youngblood Muscle. Modern Engineering.
                 </h3>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    We grew up in the golden age of American muscle—wrenching on small-block Chevys, 
-                    pushing junkyard Fox bodies to their limits, and learning the hard way what separates 
-                    a weekend warrior from a true performance build.
+                    I'm 18, just out of high school, and building this as a real-deal project. I grew up
+                    turning wrenches on junkyard finds, learning the hard way what separates a weekend
+                    bolt-on from a real performance build.
                   </p>
                   <p>
-                    Those lessons stuck. Now we blend old-school muscle shop wisdom with cutting-edge 
-                    tuning technology. LS swaps, Coyote builds, Hemi conversions—we speak fluent V8 and 
-                    we build them to last.
+                    Right now, 2 The Sky Motorsports is still just a project—what started as a class assignment
+                    is becoming the blueprint for a real shop. After graduation, I'll be a student running this
+                    as a business—stacking classes by day and builds by night. ECU + dyno tuning, forced
+                    induction, suspension and brakes, clean wiring. LS swaps, Coyote builds, Hemi conversions—
+                    I'm fluent in V8 and I build them to last.
                   </p>
                   <p>
-                    2 The Sky Motorsports pays homage to the legendary American speed shops while pushing 
-                    modern muscle to levels they never imagined. Whether you're building a classic Camaro 
-                    or supercharging a new F-150, we honor the heritage while chasing horsepower.
+                    2 The Sky Motorsports doesn't pretend to be a legacy shop—we're the next wave. Whether
+                    you're building a classic Camaro or supercharging a new F-150, we respect the roots and
+                    push the envelope. We don't just repair cars—we build legends.
                   </p>
                   <p className="font-semibold text-foreground pt-2">
-                    American iron. American power. No substitutes.
+                    Young, hungry, and building the future—one project at a time.
                   </p>
                 </div>
               </CardContent>
