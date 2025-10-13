@@ -19,23 +19,20 @@ Build for production:
 npm run build
 ```
 
-## GitHub Pages Deployment
+## Deployment
 
-This site is automatically deployed to GitHub Pages when changes are pushed to the `main` branch.
+This project can be deployed to multiple platforms:
 
-The site is available at: https://thepunksky.github.io/SSTMProject/
+### Vercel Deployment (Recommended for Full-Stack)
 
-### Manual Deployment
+Deploy the full application (frontend + backend + database) to Vercel.
 
-To manually trigger a deployment:
-1. Go to the repository's Actions tab
-2. Select the "Deploy to GitHub Pages" workflow
-3. Click "Run workflow"
+See [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md) for detailed instructions.
 
-### Configuration
+#### Manual Deployment
 
-The site uses a custom base path (`/SSTMProject/`) for GitHub Pages. This is configured in:
-- `vite.config.ts` - Sets the base path when `GITHUB_PAGES=true`
-- `.github/workflows/deploy-github-pages.yml` - The deployment workflow
-- `client/public/404.html` - Handles client-side routing for GitHub Pages
-- `client/index.html` - Includes redirect script for SPA routing
+### GitHub Pages Deployment (Static Site Only)
+
+#### Configuration
+
+For more details, see [DEPLOYMENT.md](./DEPLOYMENT.md)
