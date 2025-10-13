@@ -19,23 +19,23 @@ Build for production:
 npm run build
 ```
 
-## GitHub Pages Deployment
+## Deployment
 
-This site is automatically deployed to GitHub Pages when changes are pushed to the `main` branch.
+This project is configured for deployment on Vercel.
 
-The site is available at: https://thepunksky.github.io/SSTMProject/
+### Environment Variables
 
-### Manual Deployment
+Before deploying, make sure to configure the following environment variables in Vercel:
 
-To manually trigger a deployment:
-1. Go to the repository's Actions tab
-2. Select the "Deploy to GitHub Pages" workflow
-3. Click "Run workflow"
+- `DATABASE_URL` - PostgreSQL database connection string (required)
 
-### Configuration
+See `.env.example` for reference.
 
-The site uses a custom base path (`/SSTMProject/`) for GitHub Pages. This is configured in:
-- `vite.config.ts` - Sets the base path when `GITHUB_PAGES=true`
-- `.github/workflows/deploy-github-pages.yml` - The deployment workflow
-- `client/public/404.html` - Handles client-side routing for GitHub Pages
-- `client/index.html` - Includes redirect script for SPA routing
+### Deploy to Vercel
+
+1. Push your code to GitHub
+2. Import the project in Vercel
+3. Configure environment variables in Vercel project settings
+4. Vercel will automatically detect the configuration and deploy
+
+The build settings are configured in `vercel.json`.
