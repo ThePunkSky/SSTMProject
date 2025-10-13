@@ -1,0 +1,14 @@
+# Development files
+.replit
+.local
+
+# Git
+.git
+
+# Documentation (except README)
+DEPLOYMENT.md
+design_guidelines.md
+Skyler PROJECT DOC - Start Something That Matters_.md
+
+# Local database
+sstmproject

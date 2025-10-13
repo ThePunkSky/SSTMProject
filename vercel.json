@@ -1,10 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/api"
-    }
-  ]
+  "installCommand": "npm install --legacy-peer-deps",
+  "buildCommand": "npm run build"
 }
