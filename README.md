@@ -1,6 +1,6 @@
 # SSTMProject
 
-2 The Sky Motorsports - American Muscle V8 Performance & Custom Builds
+The Sky Motorsports - American Muscle V8 Performance & Custom Builds
 
 ## Development
 
