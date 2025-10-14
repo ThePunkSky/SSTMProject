@@ -71,8 +71,9 @@ The project is configured to run as a **Node.js application** on Vercel:
      - This builds the Express backend with esbuild → `dist/index.js`
 
 2. **Runtime:**
-   - Vercel runs `npm start` which executes `node dist/index.js`
-   - The Express server serves:
+   - Vercel deploys `api/index.ts` as a serverless function
+   - All HTTP requests are routed to this function (configured in `vercel.json`)
+   - The function creates an Express app which serves:
      - Static files from `dist/public/`
      - API routes (if any)
      - Handles SPA routing (all routes return index.html)
@@ -83,10 +84,37 @@ The project is configured to run as a **Node.js application** on Vercel:
 ```json
 {
   "version": 2,
-  "installCommand": "npm install --legacy-peer-deps",
-  "buildCommand": "npm run build"
+  "buildCommand": "npm run build",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api"
+    }
+  ]
 }
 ```
+
+This configuration:
+- Builds the project using `npm run build`
+- Routes all requests to the Express app via `api/index.ts` serverless function
+- The Express app serves static files from `dist/public/` and handles SPA routing
+
+### `api/index.ts`
+This is the serverless function entry point for Vercel:
+```typescript
+import { createApp } from "../server/app";
+
+let app: Awaited<ReturnType<typeof createApp>> | null = null;
+
+export default async function handler(req: any, res: any) {
+  if (!app) {
+    app = await createApp();
+  }
+  return app(req, res);
+}
+```
+
+This creates and caches the Express app instance, then handles all incoming requests.
 
 ### `.vercelignore`
 Excludes unnecessary files from deployment to keep the deployment size small.
