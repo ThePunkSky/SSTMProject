@@ -68,12 +68,27 @@ export async function setupVite(app: Express, server: Server) {
 }
 
 export function serveStatic(app: Express) {
-  const distPath = path.resolve(import.meta.dirname, "public");
+  // When running from bundled dist/index.js, import.meta.dirname is 'dist'
+  // When running from source server/vite.ts, import.meta.dirname is 'server'
+  // Check for both locations to support both scenarios
+  let distPath = path.resolve(import.meta.dirname, "public");
+  
+  if (!fs.existsSync(distPath)) {
+    // Try relative to project root (when running from source via api/index.ts)
+    distPath = path.resolve(import.meta.dirname, "..", "dist", "public");
+  }
 
   if (!fs.existsSync(distPath)) {
-    throw new Error(
-      `Could not find the build directory: ${distPath}, make sure to build the client first`,
-    );
+    // In development mode, Vite dev server handles static files
+    // So we don't need to throw an error here
+    const isDevelopment = process.env.NODE_ENV === "development";
+    if (!isDevelopment) {
+      throw new Error(
+        `Could not find the build directory: ${distPath}, make sure to build the client first`,
+      );
+    }
+    // In development, just return without setting up static file serving
+    return;
   }
 
   app.use(express.static(distPath));

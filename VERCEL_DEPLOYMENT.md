@@ -23,19 +23,13 @@ This guide explains how to deploy the SSTMProject to Vercel.
    - Click "Import"
 
 5. **Configure the project:**
-   - **Framework Preset:** Select "Other" (we have custom configuration)
+   - **Framework Preset:** Select "Vite" or "Other"
    - **Root Directory:** Leave as default (`.`)
-   - **Build Command:** `npm run build` (auto-detected from package.json)
-   - **Install Command:** `npm install --legacy-peer-deps` (configured in vercel.json)
-   - **Output Directory:** Leave empty (we serve via Express)
+   - **Build Command:** `npm run build` (configured in vercel.json)
+   - **Install Command:** `npm install --legacy-peer-deps`
+   - **Output Directory:** `dist/public` (configured in vercel.json)
 
-6. **Environment Variables** (if needed):
-   - Add any required environment variables:
-     - `DATABASE_URL` - Your PostgreSQL database URL (if using database features)
-     - `PORT` - Will be set automatically by Vercel
-     - `NODE_ENV` - Will be set automatically by Vercel
-
-7. **Click "Deploy"**
+6. **Click "Deploy"**
 
 8. **Wait for deployment to complete**
    - Vercel will install dependencies, build the project, and deploy it
@@ -62,31 +56,33 @@ vercel --prod
 
 ## How It Works
 
-The project is configured to run as a **Node.js application** on Vercel:
+The project is configured as a **static site** on Vercel:
 
 1. **Build Process:**
    - Vercel runs `npm install --legacy-peer-deps`
    - Vercel runs `npm run build`
      - This builds the React frontend with Vite → `dist/public/`
-     - This builds the Express backend with esbuild → `dist/index.js`
+     - This builds the Express backend with esbuild → `dist/index.js` (not used by Vercel)
 
 2. **Runtime:**
-   - Vercel runs `npm start` which executes `node dist/index.js`
-   - The Express server serves:
-     - Static files from `dist/public/`
-     - API routes (if any)
-     - Handles SPA routing (all routes return index.html)
+   - Vercel serves the static React app from `dist/public/`
+   - All static files (HTML, CSS, JS, images) are served directly by Vercel's CDN
+   - SPA routing is handled automatically by Vercel's static site features
 
 ## Configuration Files
 
 ### `vercel.json`
 ```json
 {
-  "version": 2,
-  "installCommand": "npm install --legacy-peer-deps",
-  "buildCommand": "npm run build"
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/public"
 }
 ```
+
+This configuration:
+- Runs `npm run build` to build the React frontend and Express backend
+- Serves the static React app from the `dist/public/` directory
+- Vercel handles SPA routing automatically for static sites
 
 ### `.vercelignore`
 Excludes unnecessary files from deployment to keep the deployment size small.
@@ -104,23 +100,20 @@ If you're getting 404 errors after deployment:
 
 2. **Verify the build succeeded:**
    - Make sure `npm run build` completed successfully
-   - Check that `dist/index.js` and `dist/public/` were created
+   - Check that `dist/public/` was created with `index.html` and `assets/`
 
-3. **Check environment variables:**
-   - If using a database, ensure `DATABASE_URL` is set
-   - The app will crash on startup if required env vars are missing
-
-4. **Test locally:**
+3. **Test locally:**
    ```bash
    npm run build
-   npm start
-   # Visit http://localhost:5000
+   cd dist/public
+   python3 -m http.server 8080
+   # Visit http://localhost:8080
    ```
 
-5. **Check the Function logs:**
+4. **Check deployment logs:**
    - Go to your project in Vercel Dashboard
-   - Click on "Logs" tab
-   - Look for any runtime errors
+   - Click on the deployment
+   - Check the "Build Logs" and "Deployment" tabs for any errors
 
 ### Build Failures
 
@@ -155,30 +148,15 @@ If CSS/JS files return 404:
    - For Vercel, the base path should be `/` (not `/SSTMProject/`)
    - This is correct in `vite.config.ts` - it only uses `/SSTMProject/` for GitHub Pages
 
-### Database Connection Issues
-
-If using the database features:
-
-1. **Set DATABASE_URL:**
-   - Go to Project Settings → Environment Variables
-   - Add `DATABASE_URL` with your database connection string
-   - Redeploy after adding
-
-2. **Database provider:**
-   - Neon Database (recommended for Vercel)
-   - Supabase
-   - PlanetScale
-   - Any PostgreSQL-compatible database
-
 ## Differences from GitHub Pages
 
 | Feature | GitHub Pages | Vercel |
 |---------|-------------|--------|
-| Type | Static hosting | Full-stack (Node.js) |
-| Backend | ❌ No | ✅ Yes (Express) |
+| Type | Static hosting | Static hosting (CDN) |
+| Backend | ❌ No | ⚠️ Not deployed (frontend only) |
 | Base Path | `/SSTMProject/` | `/` |
-| Database | ❌ No | ✅ Yes |
-| API Routes | ❌ No | ✅ Yes |
+| CDN | ✅ Yes | ✅ Yes (faster global) |
+| Custom Domain | ✅ Yes | ✅ Yes (easier setup) |
 | Build | GitHub Actions | Vercel Build |
 
 ## Custom Domain
