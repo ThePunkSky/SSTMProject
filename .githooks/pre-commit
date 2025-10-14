@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# Pre-commit hook to ensure code quality
+# This hook runs TypeScript type checking and build verification before allowing commits
+
+set -e
+
+echo "🔍 Running pre-commit checks..."
+
+# Check if node_modules exists
+if [ ! -d "node_modules" ]; then
+  echo "❌ node_modules not found. Please run: npm install --legacy-peer-deps"
+  exit 1
+fi
+
+# TypeScript type check
+echo "📝 Running TypeScript type check..."
+if ! npm run check; then
+  echo "❌ TypeScript type check failed. Please fix type errors before committing."
+  exit 1
+fi
+echo "✅ TypeScript type check passed"
+
+# Build check
+echo "🔨 Running build check..."
+if ! npm run build > /tmp/build-output.log 2>&1; then
+  echo "❌ Build failed. Check /tmp/build-output.log for details."
+  cat /tmp/build-output.log
+  exit 1
+fi
+echo "✅ Build successful"
+
+# Verify build artifacts
+echo "📦 Verifying build artifacts..."
+if [ ! -f "dist/index.js" ]; then
+  echo "❌ dist/index.js not found after build"
+  exit 1
+fi
+if [ ! -d "dist/public" ]; then
+  echo "❌ dist/public directory not found after build"
+  exit 1
+fi
+echo "✅ Build artifacts verified"
+
+# Quick smoke test
+echo "🔥 Running smoke test..."
+
+# Check if port 5000 is in use
+if lsof -Pi :5000 -sTCP:LISTEN -t >/dev/null 2>&1 ; then
+  echo "⚠️  Warning: Port 5000 is in use. Skipping smoke test."
+  echo "   (The server is likely already running in development mode)"
+else
+  timeout 5 node dist/index.js > /tmp/server-test.log 2>&1 &
+  SERVER_PID=$!
+  sleep 2
+
+  if ps -p $SERVER_PID > /dev/null 2>&1; then
+    echo "✅ Server smoke test passed"
+    kill $SERVER_PID 2>/dev/null || true
+  else
+    echo "❌ Server failed to start. Check /tmp/server-test.log for details."
+    cat /tmp/server-test.log
+    exit 1
+  fi
+fi
+
+echo "✨ All pre-commit checks passed!"

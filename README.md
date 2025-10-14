@@ -19,6 +19,23 @@ Build for production:
 npm run build
 ```
 
+## Contributing
+
+We enforce best practice checks to ensure code quality. Before contributing:
+
+1. **Enable git hooks** (recommended):
+   ```bash
+   ./setup-githooks.sh
+   ```
+
+2. **Run checks before committing**:
+   ```bash
+   npm run check  # TypeScript type checking
+   npm run build  # Build verification
+   ```
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines.
+
 ## Deployment
 
 This project can be deployed to multiple platforms:

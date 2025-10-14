@@ -10,3 +10,7 @@ sstmproject
 
 # Vercel
 .vercel
+
+# Test and log files
+server.log
+/tmp/
