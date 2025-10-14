@@ -2,7 +2,7 @@
 
 ## BEFORE - Vercel Deployment Failure ❌
 
-```
+```text
 19:57:41.499 npm error code ERESOLVE
 19:57:41.500 npm error ERESOLVE could not resolve
 19:57:41.500 npm error
@@ -26,8 +26,9 @@
 19:57:41.501 npm error     dev @tailwindcss/vite@"^4.1.3" from the root project
 19:57:41.502 npm error
 19:57:41.502 npm error Fix the upstream dependency conflict, or retry
-19:57:41.502 npm error this command with --force or --legacy-peer-deps
-19:57:41.502 npm error to accept an incorrect (and potentially broken) dependency resolution.
+19:57:41.502 npm error this command with --force or
+19:57:41.502 npm error --legacy-peer-deps to accept an incorrect
+19:57:41.502 npm error (and potentially broken) dependency resolution.
 19:57:41.520 Error: Command "npm install" exited with 1
 ```
 
@@ -37,7 +38,7 @@
 
 ## AFTER - Expected Vercel Deployment Success ✅
 
-```
+```text
 Installing dependencies...
 added 486 packages, and audited 487 packages in 6s
 
@@ -113,6 +114,9 @@ Build completed successfully!
 
 ## Summary
 
-The deployment failure was caused by incompatible peer dependencies. By updating just 3 packages to versions that properly support vite 7, and removing the workaround flag from vercel.json, the deployment now works with standard npm commands.
+The deployment failure was caused by incompatible peer dependencies.
+By updating just 3 packages to versions that properly support vite 7,
+and removing the workaround flag from vercel.json, the deployment now
+works with standard npm commands.
 
 **Result**: From deployment failure to deployment success with minimal changes. ✅
