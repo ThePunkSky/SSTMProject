@@ -79,9 +79,16 @@ export function serveStatic(app: Express) {
   }
 
   if (!fs.existsSync(distPath)) {
-    throw new Error(
-      `Could not find the build directory: ${distPath}, make sure to build the client first`,
-    );
+    // In development mode, Vite dev server handles static files
+    // So we don't need to throw an error here
+    const isDevelopment = process.env.NODE_ENV === "development";
+    if (!isDevelopment) {
+      throw new Error(
+        `Could not find the build directory: ${distPath}, make sure to build the client first`,
+      );
+    }
+    // In development, just return without setting up static file serving
+    return;
   }
 
   app.use(express.static(distPath));
